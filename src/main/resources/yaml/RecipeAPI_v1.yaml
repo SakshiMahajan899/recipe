@@ -1,0 +1,135 @@
+openapi: 3.0.0
+info:
+  title: Recipe Management API
+  description: API for managing and filtering recipes
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /recipes:
+    get:
+      summary: Get all recipes
+      responses:
+        '200':
+          description: A list of recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+    post:
+      summary: Add a new recipe
+      requestBody:
+        description: Recipe object that needs to be added
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '201':
+          description: Recipe created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+  /recipes/{id}:
+    put:
+      summary: Update an existing recipe
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID of the recipe to update
+      requestBody:
+        description: Recipe object that needs to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recipe'
+      responses:
+        '200':
+          description: Recipe updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+    delete:
+      summary: Delete a recipe
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID of the recipe to delete
+      responses:
+        '204':
+          description: Recipe deleted
+  /recipes/filter:
+    get:
+      summary: Filter recipes based on criteria
+      parameters:
+        - in: query
+          name: isVegetarian
+          schema:
+            type: boolean
+          description: Filter by vegetarian recipes
+        - in: query
+          name: servings
+          schema:
+            type: integer
+          description: Filter by number of servings
+        - in: query
+          name: includeIngredient
+          schema:
+            type: string
+          description: Filter by ingredient to include
+        - in: query
+          name: excludeIngredient
+          schema:
+            type: string
+          description: Filter by ingredient to exclude
+        - in: query
+          name: instruction
+          schema:
+            type: string
+          description: Filter by text in instructions
+      responses:
+        '200':
+          description: A list of filtered recipes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Recipe'
+components:
+  schemas:
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the recipe
+        name:
+          type: string
+          description: Name of the recipe
+        isVegetarian:
+          type: boolean
+          description: Whether the recipe is vegetarian
+        servings:
+          type: integer
+          description: Number of servings
+        ingredients:
+          type: array
+          items:
+            type: string
+          description: List of ingredients
+        instructions:
+          type: string
+          description: Cooking instructions
