@@ -238,6 +238,11 @@ Within the resources/yaml folder, you'll find the RecipeAPI_v1.yaml file, which 
 4. **Framework**
    - Mockito
 
+Test Coverage with UT and IT is more than 90% for Recipe Application.
+![image](https://github.com/user-attachments/assets/731141f3-2748-46c0-8124-045d7ee990ec)
+
+
+
 ## Continuous Integration
 
 Within the recipe/.github/workflows/ directory, you'll find the ci-cd.yml file, which is used to build the code.
