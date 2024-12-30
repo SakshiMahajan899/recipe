@@ -2,6 +2,8 @@ package com.abn.recipe.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,12 +77,13 @@ public class RecipeService {
                 return recipeRepository.findByIngredientAndServings(ingredientInclude, servings);
             }
 
-            if (instructionsText != null && ingredientInclude != null) {
-                return recipeRepository.findByIngredientAndInstruction(ingredientInclude, instructionsText);
+            if (instructionsText != null && ingredientExclude != null) {
+                List<Recipe> recipe =  recipeRepository.findByIngredientsNotContaining(ingredientExclude);
+                return recipe.stream().filter(r->r.getInstructions().contains(instructionsText)).toList();
             }
 
             if (isVegetarian != null) {
-                return recipeRepository.findByIsVegetarian(isVegetarian);
+                return recipeRepository.findByVegetarian(isVegetarian);
             }
             if (servings != null) {
                 return recipeRepository.findByServings(servings);

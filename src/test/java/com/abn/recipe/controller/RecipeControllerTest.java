@@ -117,7 +117,7 @@ class RecipeControllerTest {
 		Recipe recipe = new Recipe(1L, "Vegetarian Pizza", Arrays.asList("Cheese", "Tomato", "Dough"), true, 4,
 				"Bake in oven");
 		when(recipeService.filterRecipes(true, null, null, null, null)).thenReturn(Arrays.asList(recipe));
-		mockMvc.perform(get("/api/recipes/filter").param("isVegetarian", "true")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/recipes/filter").param("vegetarian", "true")).andExpect(status().isOk())
 				.andExpect(jsonPath("$[0].name").value("Vegetarian Pizza"));
 	}
 

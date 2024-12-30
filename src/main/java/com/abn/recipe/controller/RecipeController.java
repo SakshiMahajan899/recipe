@@ -103,14 +103,14 @@ public class RecipeController {
      * 
      * */
     @GetMapping("/filter")
-    public List<Recipe> filterRecipes(@RequestParam(required = false) Boolean isVegetarian,
+    public List<Recipe> filterRecipes(@RequestParam(required = false) Boolean vegetarian,
                                       @RequestParam(required = false) Integer servings,
                                       @RequestParam(required = false) String ingredientInclude,
                                       @RequestParam(required = false) String ingredientExclude,
                                       @RequestParam(required = false) String instructionsText) {
     	log.info("Request to filter recipes with parameters - isVegetarian: {}, servings: {}, ingredientInclude: {}, ingredientExclude: {}, instructionsText: {}", 
-    			isVegetarian, servings, ingredientInclude, ingredientExclude, instructionsText);
-        return recipeService.filterRecipes(isVegetarian, servings, ingredientInclude, ingredientExclude, instructionsText);
+    			vegetarian, servings, ingredientInclude, ingredientExclude, instructionsText);
+        return recipeService.filterRecipes(vegetarian, servings, ingredientInclude, ingredientExclude, instructionsText);
     }
 }
 
