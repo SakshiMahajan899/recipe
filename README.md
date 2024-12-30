@@ -37,6 +37,27 @@ This project is a collection of delicious recipes which allows users to manage t
 4. **Access the application:**
    http://localhost:8080
 
+## Using H2 Database 
+ 
+  This project uses an H2 in-memory database for development and testing purposes. 
+
+  ### Accessing H2 Database Console
+
+   - Go to http://localhost:8080/h2-console.
+   - JDBC Url is jdbc:h2:mem:recipedb
+   - User Name: recipe
+   - Password: recipe
+   - Click on "Connect" to access the H2 database console.
+
+## Spring Security  
+   
+   - This project uses Spring Security to secure the application and manage user authentication and authorization.
+   - The securityFilterChain method configures HTTP security and allowing HTTP Basic authentication for /api/recipes/**                endpoints.
+   - To access the secure endpoints, you'll need to provide authentication credentials (username and password).
+   - For production environments, consider using a more robust authentication mechanism. 
+
+ 
+
 ## API Endpoints
 
 ### Get All Recipes
