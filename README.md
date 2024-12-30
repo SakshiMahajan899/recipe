@@ -21,9 +21,110 @@ This project is a collection of delicious recipes which allows users to manage t
 - Java17
 - Maven
 
-## Installation
+## Steps to Run the Application
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/SakshiMahajan899/recipe.git
    cd recipe
+
+2. **Build the project:**
+   mvn clean install
+
+3. **Run the application:**
+   mvn spring-boot:run
+
+4. **Access the application:**
+   http://localhost:8080
+
+## API Endpoints
+
+### Get All Recipes
+
+- **URL:** `/api/recipes`
+- **Method:** `GET`
+- **Description:** Retrieve a list of all recipes.
+- **Response:**
+  ```json
+  [
+     {
+        "id": 1,
+        "name": "Chicken Alfredo",
+        "ingredients": [
+            "chicken, fettuccine, cream, parmesan, garlic"
+        ],
+        "servings": 2,
+        "instructions": "Cook fettuccine. In a separate pan, sauté garlic, then add cream and cheese. Add cooked chicken and fettuccine.",
+        "vegetarian": false
+    }
+  ]
+
+### Add New Recipe
+
+- **URL:** `/api/recipes`
+- **Method:** `POST`
+- **Description:** Add a new recipe to the collection..
+- **Request Body:**
+  ```json
+  {
+        "name": "Spaghetti Bolognese",
+        "ingredients": [
+            "spaghetti",
+           "tomato sauce"
+           ],
+        "servings": 2,
+        "instructions": "Cook spaghetti. Mix with tomato sauce. Combine and serve",
+        "vegetarian": true
+    }
+- **Response:**
+  ```json
+  {
+    "id": 4,
+    "name": "Spaghetti Bolognese",
+    "ingredients": [
+        "spaghetti",
+        "tomato sauce"
+    ],
+    "servings": 2,
+    "instructions": "Cook spaghetti. Mix with tomato sauce. Combine and serve",
+    "vegetarian": true
+   }
+
+
+### Update Recipe
+
+- **URL:** `/api/recipes/:id`
+- **Method:** `PUT`
+- **Description:** Update an existing recipe by its ID.
+- **Request Body:**
+  ```json
+  {
+    "name": "Potato Gratin",
+    "ingredients": [
+        "potatoes, cream, cheese, garlic, thyme"
+    ],
+    "servings": 4,
+    "instructions": "Layer potatoes with cream and cheese, bake until golden and bubbly.",
+    "vegetarian": true
+   }
+- **Response:**
+  ```json
+  {
+    "id": 1,
+    "name": "Potato Gratin",
+    "ingredients": [
+        "potatoes, cream, cheese, garlic, thyme"
+    ],
+    "servings": 4,
+    "instructions": "Layer potatoes with cream and cheese, bake until golden and bubbly.",
+    "vegetarian": true
+   }
+
+
+
+### Delete Recipe
+
+- **URL:** `/api/recipes/:id`
+- **Method:** `DELETE`
+- **Description:** Delete a specific recipe by its ID.
+  
