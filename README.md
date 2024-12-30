@@ -243,10 +243,14 @@ Test Coverage with UT and IT is more than 90% for Recipe Application.
 
 
 
-## Continuous Integration
+## Continuous Integration and Deployment
 
-Within the recipe/.github/workflows/ directory, you'll find the ci-cd.yml file, which is used to build the code.
+Within the recipe/.github/workflows/ directory, you'll find the ci-cd.yml file, which is used to build the code & deploy the image to dockerHub.
 
-![image](https://github.com/user-attachments/assets/9ff6b3d8-be1e-4938-9647-86550edc9227)
+![image](https://github.com/user-attachments/assets/3faaa41c-1fb3-4362-a7fd-3df0e91a9ad2)
 
-  - Also refer pipeline link https://github.com/SakshiMahajan899/recipe/actions/runs/12549747174/job/34991346981
+
+  - Also refer pipeline link https://github.com/SakshiMahajan899/recipe/actions/runs/12552128743/job/34997623342
+  - Also refer the below screenprint for the tag creation of the Recipe Application in DockerHub
+    ![image](https://github.com/user-attachments/assets/e0c6937b-8ce9-46d2-9117-e7f214c9aee7)
+
