@@ -127,4 +127,70 @@ This project is a collection of delicious recipes which allows users to manage t
 - **URL:** `/api/recipes/:id`
 - **Method:** `DELETE`
 - **Description:** Delete a specific recipe by its ID.
+
+
+
+### Filter Recipes
+
+#### All Vegetarian Recipes
+
+- **URL:** `/api/recipes/filter`
+- **Method:** `GET`
+- **Description:** Retrieve all vegetarian recipes.
+- **Query Parameter:** `vegetarian=true`
+- **Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Vegetable Stir Fry",
+      "ingredients": ["broccoli", "carrots", "bell peppers", "soy sauce"],
+      "servings": 2,
+      "instructions": "Stir fry vegetables in a pan with soy sauce.",
+      "vegetarian": true,
+    }
+  ]
+
+#### Serve 4 Persons and Have "Potatoes" as an Ingredient
+
+- **URL:** `/api/recipes/filter`
+- **Method:** `GET`
+- **Description:** Retrieve recipes that can serve 4 persons and contain "potatoes" as an ingredient.
+- **Query Parameter:** `servings=4`
+- **Query Parameter:** `ingredientInclude=Potatoes` 
+- **Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Vegetable Stir Fry",
+      "ingredients": ["Potatoes", "carrots", "bell peppers", "soy sauce"],
+      "vegetarian": true,
+      "servings": 4,
+      "instructions": "Stir fry vegetables in a pan with soy sauce."
+    }
+  ]
+
+#### Recipes Without "Salmon" as an Ingredient and Have "Oven" in the Instructions
+
+- **URL:** `/api/recipes/filter`
+- **Method:** `GET`
+- **Description:** Retrieve recipes without "salmon" as an ingredient that have "oven" in the instructions.
+- **Query Parameter:** `instructionsText=oven`
+- **Query Parameter:** `ingredientExclude=Salmon` 
+- **Response:**
+  ```json
+  [
+    {
+        "id": 1,
+        "name": "Spaghetti",
+        "ingredients": [
+            "spaghetti",
+            "tomato sauce"
+        ],
+        "vegetarian": true,
+        "servings": 2,
+        "instructions": "Cook spaghetti. Mix with tomato sauce. Put in oven for 5 minutez  and serve"
+    }
+  ]
   
