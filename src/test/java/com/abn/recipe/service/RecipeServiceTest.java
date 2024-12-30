@@ -1,6 +1,7 @@
 package com.abn.recipe.service;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -88,7 +89,7 @@ class RecipeServiceTest {
 	 void testFindByIsVegetarian() {
 		Recipe recipe = new Recipe(1L, "Vegetarian Pizza", Arrays.asList("Cheese", "Tomato", "Dough"), true, 4,
 				"Bake in oven");
-		when(recipeRepository.findByIsVegetarian(true)).thenReturn(Arrays.asList(recipe));
+		when(recipeRepository.findByVegetarian(true)).thenReturn(Arrays.asList(recipe));
 		List<Recipe> recipes = recipeService.filterRecipes(true, null, null, null, null);
 		assertEquals(1, recipes.size());
 		assertEquals("Vegetarian Pizza", recipes.get(0).getName());
@@ -143,11 +144,11 @@ class RecipeServiceTest {
 		assertEquals(6, recipes.get(0).getServings());
 	}
 	@Test
-	 void testfilterRecipes_whenInstructionsTextAndIngredientInclude_isNotNull() {
+	 void testfilterRecipes_whenInstructionsTextAndIngredientExclude_isNotNull() {
 		Recipe recipe = new Recipe(1L, "Family Pasta", Arrays.asList("Pasta", "Tomato Sauce", "Cheese"), false, 6,
 				"Boil and mix");
-		when(recipeRepository.findByIngredientAndInstruction("Cheese","Boil and mix")).thenReturn(Arrays.asList(recipe));
-		List<Recipe> recipes = recipeService.filterRecipes(null, null, "Cheese", null, "Boil and mix");
+		when(recipeRepository.findByIngredientsNotContaining(anyString())).thenReturn(Arrays.asList(recipe));
+		List<Recipe> recipes = recipeService.filterRecipes(null, null, null,"Cheese","Boil and mix");
 		assertEquals(1, recipes.size());
 		assertEquals(6, recipes.get(0).getServings());
 	}
