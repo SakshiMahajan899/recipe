@@ -13,12 +13,12 @@ import com.abn.recipe.model.Recipe;
  */
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
-    List<Recipe> findByIsVegetarian(boolean isVegetarian);
+    List<Recipe> findByVegetarian(boolean vegetarian);
 
     List<Recipe> findByServings(int servings);
     
      
-    @Query(value = "SELECT r.* FROM Recipe r LEFT JOIN Recipe_ingredients ri ON r.id = ri.Recipe_id WHERE NOT EXISTS (SELECT 1 FROM Recipe_ingredients ri2 WHERE ri2.Recipe_id = r.id AND ri2.ingredients LIKE %:ingredient%)", nativeQuery = true)
+    @Query(value = "SELECT DISTINCT r.* FROM Recipe r LEFT JOIN Recipe_ingredients ri ON r.id = ri.Recipe_id WHERE NOT EXISTS (SELECT 1 FROM Recipe_ingredients ri2 WHERE ri2.Recipe_id = r.id AND ri2.ingredients LIKE %:ingredient%)", nativeQuery = true)
     List<Recipe> findByIngredientsNotContaining(String ingredient);
     
     @Query(value = "SELECT r.* FROM Recipe r JOIN Recipe_ingredients ri ON r.id = ri.Recipe_id WHERE ri.ingredients LIKE %:ingredient%", nativeQuery = true)
@@ -31,4 +31,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     
     @Query(value = "SELECT r.* FROM Recipe r JOIN Recipe_ingredients ri ON r.id = ri.Recipe_id WHERE ri.ingredients LIKE %:ingredient% AND r.instructions LIKE %:instruction%", nativeQuery = true) 
     List<Recipe> findByIngredientAndInstruction(@Param("ingredient") String ingredient, @Param("instruction") String instruction);
+    
+    @Query(value = "SELECT DISTINCT r.* FROM Recipe r JOIN Recipe_ingredients ri ON r.id = ri.Recipe_id WHERE ri.ingredients NOT LIKE %:ingredient% AND r.instructions LIKE %:instruction%", nativeQuery = true)
+    List<Recipe> findByIngredientExcludeAndInstruction(@Param("ingredient") String ingredient, @Param("instruction") String instruction);
 }
