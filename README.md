@@ -4,6 +4,14 @@
 
 This project is a collection of delicious recipes which allows users to manage their favorite recipes. Each recipe includes a list of ingredients,number of servings,receipe is vegetarian,ingredients, instructions.
 
+## Recipe Management API YAML
+
+Within the resources/yaml folder, you'll find the RecipeAPI_v1.yaml file, which details all the endpoints provided by the Recipe Application.
+
+![image](https://github.com/user-attachments/assets/1be330ac-7770-4f58-9dff-92fc1906bf0a)
+
+
+
 ## Features
 
 - Whether or not the dish is vegetarian
@@ -214,4 +222,26 @@ This project is a collection of delicious recipes which allows users to manage t
         "instructions": "Cook spaghetti. Mix with tomato sauce. Put in oven for 5 minutez  and serve"
     }
   ]
-  
+
+## Test Coverage
+
+   ### Unit Tests (UT) & Integration Tests (IT)
+
+1. **Scope**
+   - Focuses on individual functions, methods, or classes.
+   - Focuses on the interactions between units and their dependencies.
+
+3. **Coverage**
+   - Aims to cover all possible code paths, including edge cases.
+   - Aims to cover all critical integration points and workflows.
+
+4. **Framework**
+   - Mockito
+
+## Continuous Integration
+
+Within the recipe/.github/workflows/ directory, you'll find the ci-cd.yml file, which is used to build the code.
+
+![image](https://github.com/user-attachments/assets/9ff6b3d8-be1e-4938-9647-86550edc9227)
+
+  - Also refer pipeline link https://github.com/SakshiMahajan899/recipe/actions/runs/12549747174/job/34991346981
