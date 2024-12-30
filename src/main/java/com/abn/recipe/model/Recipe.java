@@ -18,19 +18,19 @@ public class Recipe {
 		private String name;
 		@ElementCollection
 	    private List<String> ingredients;
-	    private boolean isVegetarian;
+	    private boolean vegetarian;
 	    private int servings;
 	    private String instructions;
 	    
 		public Recipe() {
 			super();
 		}
-		public Recipe(Long id, String name, List<String> ingredients, boolean isVegetarian, int servings,
+		public Recipe(Long id, String name, List<String> ingredients, boolean vegetarian, int servings,
 				String instructions) {
 			this.id = id;
 			this.name = name;
 			this.ingredients = ingredients;
-			this.isVegetarian = isVegetarian;
+			this.vegetarian = vegetarian;
 			this.servings = servings;
 			this.instructions = instructions;
 		}
@@ -46,8 +46,8 @@ public class Recipe {
 		public List<String> getIngredients() {
 			return ingredients;
 		}
-		public boolean isVegetarian() {
-			return isVegetarian;
+		public boolean getVegetarian() {
+			return vegetarian;
 		}
 		public int getServings() {
 			return servings;
@@ -55,6 +55,7 @@ public class Recipe {
 		public String getInstructions() {
 			return instructions;
 		}
+		
 	    
 	    
 }
